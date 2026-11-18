@@ -1,11 +1,11 @@
 # 🌐 EPU LANGUAGE CENTER MANAGEMENT SYSTEM
 **HỆ THỐNG QUẢN LÝ TRUNG TÂM NGOẠI NGỮ PHÂN TÁN (EPU LANG-CORE)**
 
-![.NET](https://shields.io)
-![C#](https://shields.io)
-![TCP Socket](https://shields.io)
-![SQL Server](https://shields.io)
-![EPU](https://shields.io)
+![.NET]
+![C#]
+![TCP Socket]
+![SQL Server]
+![EPU]
 
 ---
 
@@ -26,8 +26,8 @@ Hệ thống mô phỏng quy trình vận hành thực tế của một trung t�
 
 | STT | Họ và Tên | Vai trò chính | Phân công nhiệm vụ cụ thể |
 | :---: | :--- | :--- | :--- |
-| **1** | **[Tên Nhóm trưởng]** *(Nhóm trưởng)* | **Backend Core Server & Database Architect** | • Thiết kế lược đồ CSDL chuẩn 3NF (`LangCenter_DB`) và khởi tạo dữ liệu mẫu.<br>• Lập trình máy chủ `Lang.Server` trên nền tảng `TcpListener` xử lý kết nối đa luồng (`Task.Run`).<br>• Xây dựng tầng nghiệp vụ `DatabaseHelper`, xử lý `SqlTransaction` và khóa tranh chấp sĩ số (`UPDLOCK`, `ROWLOCK`).<br>• Định nghĩa giao thức gói tin JSON (`Lang.Common`) và điều phối tiến độ GitHub. |
-| **2** | **[Tên Thành viên 2]** | **Frontend Client & Business Logic Developer** | • Thiết kế giao diện ứng dụng Quầy Ghi danh `Lang.Client` (WinForms) và khung điều hướng `MainForm`.<br>• Xây dựng bộ `UserControl` chức năng (Đăng nhập, Quản lý Học viên, Mở lớp & Xếp lịch, Đăng ký học, Nhập điểm, Thống kê).<br>• Lập trình lớp giao tiếp `LangClientSocket.cs` để gửi/nhận dữ liệu thời gian thực với Server.<br>• Tích hợp module Xuất phiếu thu học phí, in chứng chỉ ngoại ngữ và viết tài liệu báo cáo. |
+| **1** | **Hoàng Minh Vũ** *(Nhóm trưởng)* | **Backend Core Server & Database Architect** | • Thiết kế lược đồ CSDL chuẩn 3NF (`LangCenter_DB`) và khởi tạo dữ liệu mẫu.<br>• Lập trình máy chủ `Lang.Server` trên nền tảng `TcpListener` xử lý kết nối đa luồng (`Task.Run`).<br>• Xây dựng tầng nghiệp vụ `DatabaseHelper`, xử lý `SqlTransaction` và khóa tranh chấp sĩ số (`UPDLOCK`, `ROWLOCK`).<br>• Định nghĩa giao thức gói tin JSON (`Lang.Common`) và điều phối tiến độ GitHub. |
+| **2** | **Phan Mạnh Trường** | **Frontend Client & Business Logic Developer** | • Thiết kế giao diện ứng dụng Quầy Ghi danh `Lang.Client` (WinForms) và khung điều hướng `MainForm`.<br>• Xây dựng bộ `UserControl` chức năng (Đăng nhập, Quản lý Học viên, Mở lớp & Xếp lịch, Đăng ký học, Nhập điểm, Thống kê).<br>• Lập trình lớp giao tiếp `LangClientSocket.cs` để gửi/nhận dữ liệu thời gian thực với Server.<br>• Tích hợp module Xuất phiếu thu học phí, in chứng chỉ ngoại ngữ và viết tài liệu báo cáo. |
 
 ---
 
