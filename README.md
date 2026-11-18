@@ -34,22 +34,34 @@ Hệ thống mô phỏng quy trình vận hành thực tế của một trung t�
 ### 🏗️ 3. KIẾN TRÚC HỆ THỐNG (SYSTEM ARCHITECTURE)
 Hệ thống hoạt động theo mô hình **Client - Server Phân tán (Distributed Client-Server Model)**:
 
-```text
-+-----------------------+       TCP Socket (JSON)       +-----------------------+       ADO.NET / SQL       +-----------------------+
+```mermaid
+flowchart TD
+    subgraph CLIENTS ["💻 MẠNG LƯỚI QUẦY GHI DANH PHÂN TÁN (CLIENTS)"]
+        direction LR
+        C1["🖥️ Quầy Ghi Danh #01<br/>(Cơ sở Cầu Giấy)<br/>IP: 192.168.1.10"]
+        C2["🖥️ Quầy Ghi Danh #02<br/>(Cơ sở Đống Đa)<br/>IP: 192.168.1.11"]
+        Cn["🖥️ Quầy Ghi Danh #0n<br/>(Chi nhánh Khác...)<br/>IP: 192.168.1.1x"]
+    end
 
-|   Quầy Ghi Danh 01    | <===========================> |                       | <=======================> |                       |
-|    (Lang.Client)      |         Port: 9999            |   Lang-Core Server    |     SqlTransaction        |    SQL Server 2022    |
-+-----------------------+                               |     (Lang.Server)     |    (UPDLOCK, ROWLOCK)     |    (LangCenter_DB)    |
+    subgraph NETWORK ["🌐 HẠ TẦNG MẠNG SOCKET TCP"]
+        TCP["Giao thức Socket TCP<br/>(Port: 9999)<br/>Packet: JSON { Action, Data }"]
+    end
 
-                                                        |                       |                           |                       |
-+-----------------------+       TCP Socket (JSON)       |  Multithreaded Pool   |                           |  ACID Centralized DB  |
+    subgraph SERVER ["⚙️ MÁY CHỦ TRUNG TÂM NGOẠI NGỮ (LANG-CORE SERVER)"]
+        SRV["Lang.Server (Console App)<br/>Đa luồng bất đồng bộ (Task.Run)<br/>Xử lý đồng thời nhiều quầy"]
+    end
 
-|   Quầy Ghi Danh 02    | <===========================> |      (Task.Run)       |                           |                       |
-|    (Lang.Client)      |         Port: 9999            +-----------------------+                           +-----------------------+
-+-----------------------+
+    subgraph DATABASE ["🗄️ CƠ SỞ DỮ LIỆU TẬP TRUNG (CENTRALIZED SQL)"]
+        DB[("SQL Server 2022<br/>(LangCenter_DB)<br/>Chuẩn toàn vẹn ACID<br/>Khóa dòng: UPDLOCK, ROWLOCK")]
+    end
+
+    C1 <--> TCP
+    C2 <--> TCP
+    Cn <--> TCP
+    TCP <--> SRV
+    SRV <-->|"ADO.NET / SqlTransaction"| DB
 ```
 
----
 
 ### ⚡ 4. TRỌNG TÂM KỸ THUẬT & ĐIỂM SÁNG ĐỒ ÁN
 
